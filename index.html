@@ -24,10 +24,9 @@
     .site-container {
     position: relative;
     width: 100%;
-    max-width: 1920px;
-    aspect-ratio: 16 / 9;
+    min-height: 100vh;  /* ocupa a tela toda */
     background: #0b1a2a url('background-site.png') no-repeat center center;
-    background-size: contain;  /* estica pra preencher TUDO */
+    background-size: cover;  /* cobre sem esticar */
     }
 
     /* Estilo base das áreas clicáveis invisíveis */
