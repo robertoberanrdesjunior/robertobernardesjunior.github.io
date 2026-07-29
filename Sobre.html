@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre | Prof. Roberto Bernardes Jr.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
+        
+        nav {
+            height: 70px; background-color: rgba(11, 26, 42, 0.95);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; position: fixed; top: 0; width: 100%;
+            z-index: 1000; border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand img { height: 36px; width: auto; }
+        .brand-sub { color: #ffffff; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; }
+        
+        .menu { display: flex; gap: 25px; }
+        .menu a { color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; transition: color 0.3s ease; }
+        .menu a:hover { color: #4A90D9; }
+        .menu a.active { color: #4A90D9; font-weight: 700; }
+
+        .page-wrapper {
+            min-height: 100vh;
+            background-image: url('background-site.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            padding-top: 70px;
+            display: flex; flex-direction: column;
+        }
+
+        .page-header {
+            background: rgba(26, 45, 74, 0.85);
+            padding: 50px 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(74, 144, 217, 0.2);
+        }
+        .page-header h1 { font-size: 32px; color: #4A90D9; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }
+        .page-header p { font-size: 16px; color: #e0e0e0; max-width: 800px; margin: 0 auto; font-weight: 300; }
+
+        .container { width: 92%; max-width: 1200px; margin: 30px auto; flex: 1; }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; }
+
+        .plano-card { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .plano-info h2 { color: #4A90D9; font-size: 22px; margin-bottom: 5px; font-weight: 700; }
+        .plano-info p { color: #cccccc; font-size: 14px; }
+        
+        .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
+        .materials-grid h3 { color: #4A90D9; font-size: 18px; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid rgba(74, 144, 217, 0.3); padding-bottom: 10px; }
+
+        .item-list { list-style: none; }
+        .item-list li { margin-bottom: 8px; padding: 8px; border-radius: 6px; background: rgba(255, 255, 255, 0.03); border: 1px solid transparent; font-size: 12px; line-height: 1.4; color: #eeeeee; }
+        .item-list li strong { color: #4A90D9; margin-right: 5px; }
+        .item-list li a { text-decoration: none; color: inherit; display: block; transition: color 0.2s ease; }
+        .item-list li a:hover { color: #4A90D9; }
+
+        footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        footer a { color: #4A90D9; text-decoration: none; }
+
+        @media (max-width: 992px) { .materials-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .menu { display: none; } .brand-sub { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="RBJ®">
+            <span class="brand-sub">Prof. Roberto Bernardes Jr.</span>
+        </a>
+        <div class="menu">
+            <a href="index.html">Início</a>
+            <a href="Gestao_de_Custos.html">Custos</a>
+            <a href="TIAA.html">TIAA</a>
+            <a href="Administracao_Financeira.html">ADM Financeira</a>
+            <a href="Aplicativos_Informatizados.html">AI</a>
+            <a href="Sobre.html" class="active">Sobre</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <header class="page-header">
+            <h1>Sobre</h1>
+            <p>Conheça minha trajetória acadêmica, profissional e minha missão como educador.</p>
+        </header>
+
+        <div class="container">
+            <div class="glass-card plano-card">
+                <div class="plano-info">
+                    <h2>Prof. Roberto Bernardes Jr.</h2>
+                    <p>Doutor e Mestre em Administração | Engenheiro | Contador | Matemático | Educador</p>
+                </div>
+            </div>
+
+            <div class="materials-grid">
+                <div class="glass-card">
+                    <h3>🎓 Formação Acadêmica</h3>
+                    <ul class="item-list">
+                        <li><strong>•</strong> Doutor e Mestre em Administração (CAPES)</li>
+                        <li><strong>•</strong> Bacharel em Administração e Contabilidade</li>
+                        <li><strong>•</strong> Engenheiro Mecânico e Engenheiro Civil</li>
+                        <li><strong>•</strong> Tecnólogo em Finanças e Análise de Sistemas</li>
+                        <li><strong>•</strong> Licenciado em Matemática, Pedagogia e Ed. Física</li>
+                        <li><strong>•</strong> Pós-graduado em Docência, Controladoria e Estatística</li>
+                        <li><strong>•</strong> MBA em Gestão de EAD e Gestão de Escolas Públicas</li>
+                        <li><strong>•</strong> Cursando Ciência de Dados pela UNIVESP</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3>💼 Experiência Profissional</h3>
+                    <ul class="item-list">
+                        <li><strong>•</strong> Coordenador de Projetos - Controladoria CPS</li>
+                        <li><strong>•</strong> Dashboards e Mapeamento de Processos</li>
+                        <li><strong>•</strong> Laboratório de Currículo CPS - Matemática e Física</li>
+                        <li><strong>•</strong> Desenvolvimento de Material Instrucional GEEaD</li>
+                        <li><strong>•</strong> Docente temporário no SENAC (Administração)</li>
+                        <li><strong>•</strong> Mais de 20 anos em educação</li>
+                        <li><strong>•</strong> 12 anos como consultor de negócios</li>
+                        <li><strong>•</strong> Projetos industriais e automação (ANSYS)</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3>📚 Produção Acadêmica</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> Site oficial do autor</a></li>
+                        <li><a href="http://lattes.cnpq.br/91703" target="_blank"><strong>•</strong> Currículo Lattes</a></li>
+                        <li><a href="https://orcid.org/0000-0002" target="_blank"><strong>•</strong> Registro ORCID</a></li>
+                        <li><a href="https://www.credly.com/user/" target="_blank"><strong>•</strong> Badges Credly</a></li>
+                        <li><a href="https://clubedeautores.com.br/livros/autores/roberto-bernardes-junior" target="_blank"><strong>•</strong> Clube de Autores</a></li>
+                        <li><strong>•</strong> Pesquisa: Blockchain e Supply Chain</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3>🔬 Áreas de Pesquisa</h3>
+                    <ul class="item-list">
+                        <li><strong>•</strong> Cadeia de Suprimentos (Supply Chain)</li>
+                        <li><strong>•</strong> Blockchain aplicado à gestão</li>
+                        <li><strong>•</strong> Controladoria e Finanças Corporativas</li>
+                        <li><strong>•</strong> Big Data e Ciência de Dados</li>
+                        <li><strong>•</strong> Automação e Análise Estrutural (ANSYS)</li>
+                        <li><strong>•</strong> Educação híbrida e a distância</li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3>🌍 Visão Multidisciplinar</h3>
+                    <ul class="item-list">
+                        <li><strong>•</strong> Integração: Negócios + Engenharias + Contabilidade</li>
+                        <li><strong>•</strong> Base Científica: Matemática + Pedagogia</li>
+                        <li><strong>•</strong> Suporte Tecnológico: Análise de Sistemas + Dados</li>
+                        <li><strong>•</strong> Foco em soluções integradas para mercado e educação</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2012 RBJ® Roberto Bernardes Jr. - Todos os direitos reservados.</p>
+            <p>Contato: <a href="mailto:etecpirituba.pi@gmail.com">etecpirituba.pi@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
