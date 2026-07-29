@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roberto Bernardes Jr. | Portal Acadêmico</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #0d1b2a;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Container proporcional à imagem gerada */
+    .site-container {
+      position: relative;
+      width: 100%;
+      max-width: 1920px;
+      aspect-ratio: 16 / 9; /* Mantém a proporção exata da imagem */
+      background: url('background-site.png') no-repeat center center;
+      background-size: contain;
+    }
+
+    /* Estilo base das áreas clicáveis invisíveis */
+    .hotspot {
+      position: absolute;
+      display: block;
+      text-decoration: none;
+      /* Para testar o lugar dos botões, desmarque a linha abaixo: */
+      /* border: 2px dashed red; background: rgba(255, 0, 0, 0.2); */
+      border-radius: 4px;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    /* Efeito ao passar o mouse */
+    .hotspot:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      cursor: pointer;
+    }
+
+    /* --- POSICIONAMENTO DOS LINKS --- */
+
+    /* Menu Superior */
+    #link-inicio      { top: 1.5%; left: 53.2%; width: 3.5%; height: 3%; }
+    #link-custos      { top: 1.5%; left: 57%;   width: 4.5%; height: 3%; }
+    #link-tiaa        { top: 1.5%; left: 61.5%; width: 3%;   height: 3%; }
+    #link-adm-fin     { top: 1.5%; left: 65.4%; width: 7%;   height: 3%; }
+    #link-ai          { top: 1.5%; left: 72.8%; width: 2.2%; height: 3%; }
+    #link-sobre       { top: 1.5%; left: 75.7%; width: 3.5%; height: 3%; }
+
+    /* Botões "Ver Materiais" dos 4 cards inferiores */
+    #btn-gestao-custos {
+      top: 85.5%;
+      left: 25%;
+      width: 11.5%;
+      height: 3.8%;
+    }
+
+    #btn-teoria-info {
+      top: 85.5%;
+      left: 39%;
+      width: 11.2%;
+      height: 3.8%;
+    }
+
+    #btn-adm-financeira {
+      top: 85.5%;
+      left: 52.3%;
+      width: 11.2%;
+      height: 3.8%;
+    }
+
+    #btn-ai {
+      top: 85.5%;
+      left: 65.8%;
+      width: 11%;
+      height: 3.8%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="site-container">
+
+    <!-- Links do Menu Superior -->
+    <a href="index.html" class="hotspot" id="link-inicio" title="Início"></a>
+    <a href="Gestao_de_Custos.html" class="hotspot" id="link-custos" title="Custos"></a>
+    <a href="TIAA.html" class="hotspot" id="link-tiaa" title="TIAA"></a>
+    <a href="Administracao_Financeira.html" class="hotspot" id="link-adm-fin" title="ADM Financeira"></a>
+    <a href="Aplicativos_Informatizados.html" class="hotspot" id="link-ai" title="Aplicativos Informatizados (AI)"></a>
+    <a href="Sobre.html" class="hotspot" id="link-sobre" title="Sobre"></a>
+
+    <!-- Botões Ver Materiais -->
+    <a href="Gestao_de_Custos.html" class="hotspot" id="btn-gestao-custos" title="Ver Materiais - Gestão de Custos"></a>
+    <a href="Teoria_da_Informacao.html" class="hotspot" id="btn-teoria-info" title="Ver Materiais - Teoria da Informação"></a>
+    <a href="Administracao_Financeira.html" class="hotspot" id="btn-adm-financeira" title="Ver Materiais - Administração Financeira"></a>
+    <a href="Aplicativos_Informatizados.html" class="hotspot" id="btn-ai" title="Ver Materiais - Aplicativos Informatizados"></a>
+
+  </div>
+
+</body>
+</html>
