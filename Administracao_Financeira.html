@@ -17,6 +17,7 @@
             padding: 0 5%; position: fixed; top: 0; width: 100%;
             z-index: 1000; border-bottom: 1px solid rgba(74, 144, 217, 0.3);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand img { height: 36px; width: auto; }
@@ -37,47 +38,59 @@
             display: flex; flex-direction: column;
         }
 
+        /* HEADER SUPERIOR */
         .page-header {
-            background: rgba(26, 45, 74, 0.85);
-            padding: 50px 5%;
+            background: rgba(11, 26, 42, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 45px 5%;
             text-align: center;
-            border-bottom: 1px solid rgba(74, 144, 217, 0.2);
+            border-bottom: 1px solid rgba(74, 144, 217, 0.3);
         }
-        .page-header h1 { font-size: 32px; color: #4A90D9; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }
-        .page-header p { font-size: 16px; color: #e0e0e0; max-width: 800px; margin: 0 auto; font-weight: 300; }
+        .page-header h1 { font-size: 32px; color: #FFFFFF; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; text-shadow: 0px 2px 4px rgba(0,0,0,0.5); }
+        .page-header p { font-size: 16px; color: #E2E8F0; max-width: 800px; margin: 0 auto; font-weight: 400; }
 
         .container { width: 92%; max-width: 1200px; margin: 30px auto; flex: 1; }
 
+        /* CARDS GLASS ENCORPADOS */
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(11, 26, 42, 0.82);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(74, 144, 217, 0.4);
             border-radius: 15px;
             padding: 25px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; }
+        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; background: rgba(11, 26, 42, 0.92); }
 
         .plano-card { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .plano-info h2 { color: #4A90D9; font-size: 22px; margin-bottom: 5px; font-weight: 700; }
-        .plano-info p { color: #cccccc; font-size: 14px; }
+        .plano-info h2 { color: #FFFFFF; font-size: 22px; margin-bottom: 6px; font-weight: 700; text-shadow: 0px 2px 4px rgba(0,0,0,0.4); }
+        .plano-info p { color: #CBD5E1; font-size: 14px; font-weight: 500; }
         
         .btn-blue {
             background-color: #4A90D9; color: #ffffff; text-decoration: none;
             padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 13px;
-            text-transform: uppercase; transition: background 0.3s ease; display: inline-block;
+            text-transform: uppercase; transition: background 0.3s ease, transform 0.2s ease; display: inline-block;
         }
-        .btn-blue:hover { background-color: #357abd; }
+        .btn-blue:hover { background-color: #357abd; transform: scale(1.02); }
 
         .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
-        .materials-grid h3 { color: #4A90D9; font-size: 18px; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid rgba(74, 144, 217, 0.3); padding-bottom: 10px; }
+        .materials-grid h3 { 
+            color: #FFFFFF; 
+            font-size: 18px; 
+            margin-bottom: 18px; 
+            font-weight: 700; 
+            border-bottom: 1px solid rgba(74, 144, 217, 0.4); 
+            padding-bottom: 10px; 
+        }
 
+        /* LISTA DE AULAS */
         .item-list { list-style: none; }
-        .item-list li { margin-bottom: 0; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
-        .item-list li:hover { background: rgba(74, 144, 217, 0.15); }
-        .item-list li a { text-decoration: none; color: inherit; display: block; padding: 10px; font-size: 12px; line-height: 1.4; }
-        .item-list li strong { color: #4A90D9; margin-right: 5px; }
+        .item-list li { margin-bottom: 4px; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
+        .item-list li:hover { background: rgba(74, 144, 217, 0.25); }
+        .item-list li a { text-decoration: none; color: #F1F5F9; display: block; padding: 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
+        .item-list li strong { color: #4A90D9; margin-right: 6px; font-weight: 800; }
 
         footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         footer a { color: #4A90D9; text-decoration: none; }
@@ -114,20 +127,20 @@
                     <h2>Administração Financeira e Orçamentária</h2>
                     <p>3° ADM — Quartas-feiras | 16 aulas</p>
                 </div>
-                <a href="https://drive.google.com/file/d/1aIRlhOd4-vLn1d6JtVK3qkU4qlokgtcB/view?usp=sharing" class="btn-blue">Baixar Plano de Ensino →</a>
+                <a href="https://drive.google.com/file/d/1aIRlhOd4-vLn1d6JtVK3qkU4qlokgtcB/view?usp=sharing" target="_blank" class="btn-blue">Baixar Plano de Ensino →</a>
             </div>
 
             <div class="materials-grid">
                 <div class="glass-card">
-                    <h3>Fundamentos</h3>
+                    <h3>🔷 Fundamentos</h3>
                     <ul class="item-list">
-                        <li><a href="https://drive.google.com/file/d/1ZN_aV4i4ShQ-qTwCKc_msJ7VB-yO9B7R/view?usp=sharing"><strong>Aula 1</strong> — Introdução à Administração Financeira</a></li>
+                        <li><a href="https://drive.google.com/file/d/1ZN_aV4i4ShQ-qTwCKc_msJ7VB-yO9B7R/view?usp=sharing" target="_blank"><strong>Aula 1</strong> — Introdução à Administração Financeira</a></li>
                         <li><a href="aula2_balanco.pdf"><strong>Aula 2</strong> — Balanço Patrimonial</a></li>
                     </ul>
                 </div>
 
                 <div class="glass-card">
-                    <h3>DRE e Indicadores</h3>
+                    <h3>🔷 DRE e Indicadores</h3>
                     <ul class="item-list">
                         <li><a href="aula3_dre.pdf"><strong>Aula 3</strong> — Demonstração do Resultado do Exercício (DRE)</a></li>
                         <li><a href="aula4_liquidez.pdf"><strong>Aula 4</strong> — Indicadores Financeiros I — Liquidez e Endividamento</a></li>
@@ -136,7 +149,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <h3>Capital de Giro e Fluxo de Caixa</h3>
+                    <h3>🔷 Capital de Giro e Fluxo de Caixa</h3>
                     <ul class="item-list">
                         <li><a href="aula6_capital_giro.pdf"><strong>Aula 6</strong> — Capital de Giro e Ciclo Financeiro</a></li>
                         <li><a href="aula7_fcx_elaboracao.pdf"><strong>Aula 7</strong> — Fluxo de Caixa I — Elaboração</a></li>
@@ -145,7 +158,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <h3>Orçamento Empresarial</h3>
+                    <h3>🔷 Orçamento Empresarial</h3>
                     <ul class="item-list">
                         <li><a href="aula9_orc_vendas.pdf"><strong>Aula 9</strong> — Orçamento Empresarial I — Orçamento de Vendas</a></li>
                         <li><a href="aula10_orc_operacionais.pdf"><strong>Aula 10</strong> — Orçamento Empresarial II — Orçamentos Operacionais</a></li>
@@ -154,7 +167,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <h3>Análise de Investimentos</h3>
+                    <h3>🔷 Análise de Investimentos</h3>
                     <ul class="item-list">
                         <li><a href="aula12_ponto_equilibrio.pdf"><strong>Aula 12</strong> — Ponto de Equilíbrio e Alavancagem</a></li>
                         <li><a href="aula13_vpl_tir.pdf"><strong>Aula 13</strong> — Decisões de Investimento — VPL, TIR e Payback</a></li>
@@ -163,7 +176,7 @@
                 </div>
 
                 <div class="glass-card">
-                    <h3>Gestão e Revisão</h3>
+                    <h3>🔷 Gestão e Revisão</h3>
                     <ul class="item-list">
                         <li><a href="aula15_contas_receber.pdf"><strong>Aula 15</strong> — Administração de Contas a Receber e Estoques</a></li>
                         <li><a href="aula16_revisao_final.pdf"><strong>Aula 16</strong> — Revisão e Avaliação Final</a></li>
