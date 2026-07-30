@@ -17,6 +17,7 @@
             padding: 0 5%; position: fixed; top: 0; width: 100%;
             z-index: 1000; border-bottom: 1px solid rgba(74, 144, 217, 0.3);
             backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
         .brand img { height: 36px; width: auto; }
@@ -37,47 +38,59 @@
             display: flex; flex-direction: column;
         }
 
+        /* HEADER SUPERIOR COM AZUL LEITOSO MAIS FORTE */
         .page-header {
-            background: rgba(26, 45, 74, 0.85);
-            padding: 50px 5%;
+            background: rgba(11, 26, 42, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 45px 5%;
             text-align: center;
-            border-bottom: 1px solid rgba(74, 144, 217, 0.2);
+            border-bottom: 1px solid rgba(74, 144, 217, 0.3);
         }
-        .page-header h1 { font-size: 32px; color: #4A90D9; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; }
-        .page-header p { font-size: 16px; color: #e0e0e0; max-width: 800px; margin: 0 auto; font-weight: 300; }
+        .page-header h1 { font-size: 32px; color: #FFFFFF; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; text-shadow: 0px 2px 4px rgba(0,0,0,0.5); }
+        .page-header p { font-size: 16px; color: #E2E8F0; max-width: 800px; margin: 0 auto; font-weight: 400; }
 
         .container { width: 92%; max-width: 1200px; margin: 30px auto; flex: 1; }
 
+        /* CARDS ESTILO AZUL LEITOSO ENCORPADO */
         .glass-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(11, 26, 42, 0.82);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(74, 144, 217, 0.4);
             border-radius: 15px;
             padding: 25px;
-            transition: transform 0.3s ease, border-color 0.3s ease;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; }
+        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; background: rgba(11, 26, 42, 0.92); }
 
         .plano-card { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .plano-info h2 { color: #4A90D9; font-size: 22px; margin-bottom: 5px; font-weight: 700; }
-        .plano-info p { color: #cccccc; font-size: 14px; }
+        .plano-info h2 { color: #FFFFFF; font-size: 22px; margin-bottom: 6px; font-weight: 700; text-shadow: 0px 2px 4px rgba(0,0,0,0.4); }
+        .plano-info p { color: #CBD5E1; font-size: 14px; font-weight: 500; }
         
         .btn-blue {
             background-color: #4A90D9; color: #ffffff; text-decoration: none;
             padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 13px;
-            text-transform: uppercase; transition: background 0.3s ease; display: inline-block;
+            text-transform: uppercase; transition: background 0.3s ease, transform 0.2s ease; display: inline-block;
         }
-        .btn-blue:hover { background-color: #357abd; }
+        .btn-blue:hover { background-color: #357abd; transform: scale(1.02); }
 
         .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
-        .materials-grid h3 { color: #4A90D9; font-size: 18px; margin-bottom: 20px; font-weight: 700; border-bottom: 1px solid rgba(74, 144, 217, 0.3); padding-bottom: 10px; }
+        .materials-grid h3 { 
+            color: #FFFFFF; 
+            font-size: 18px; 
+            margin-bottom: 18px; 
+            font-weight: 700; 
+            border-bottom: 1px solid rgba(74, 144, 217, 0.4); 
+            padding-bottom: 10px; 
+        }
 
+        /* LISTA DE MATERIAIS COM LEITURA PERFEITA */
         .item-list { list-style: none; }
-        .item-list li { margin-bottom: 0; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
-        .item-list li:hover { background: rgba(74, 144, 217, 0.15); }
-        .item-list li a { text-decoration: none; color: inherit; display: block; padding: 10px; font-size: 12px; line-height: 1.4; }
-        .item-list li strong { color: #4A90D9; margin-right: 5px; }
+        .item-list li { margin-bottom: 4px; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
+        .item-list li:hover { background: rgba(74, 144, 217, 0.25); }
+        .item-list li a { text-decoration: none; color: #F1F5F9; display: block; padding: 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
+        .item-list li strong { color: #4A90D9; margin-right: 6px; font-weight: 800; }
 
         footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         footer a { color: #4A90D9; text-decoration: none; }
