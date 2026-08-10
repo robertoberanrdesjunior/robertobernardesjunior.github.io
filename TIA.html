@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIA | Prof. Dr. Roberto Bernardes Jr.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
+        
+        nav {
+            height: 70px; background-color: rgba(11, 26, 42, 0.95);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; position: fixed; top: 0; width: 100%;
+            z-index: 1000; border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand img { height: 36px; width: auto; }
+        .brand-sub { color: #ffffff; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; }
+        
+        .menu { display: flex; gap: 25px; }
+        .menu a { color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; transition: color 0.3s ease; }
+        .menu a:hover { color: #4A90D9; }
+        .menu a.active { color: #4A90D9; font-weight: 700; }
+
+        .page-wrapper {
+            min-height: 100vh;
+            background-image: url('background-site.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            padding-top: 70px;
+            display: flex; flex-direction: column;
+        }
+
+        .page-header {
+            background: rgba(11, 26, 42, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 45px 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+        }
+        .page-header h1 { font-size: 32px; color: #FFFFFF; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; text-shadow: 0px 2px 4px rgba(0,0,0,0.5); }
+        .page-header p { font-size: 16px; color: #E2E8F0; max-width: 800px; margin: 0 auto; font-weight: 400; }
+
+        .container { width: 92%; max-width: 1200px; margin: 30px auto; flex: 1; }
+
+        .glass-card {
+            background: rgba(11, 26, 42, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(74, 144, 217, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; background: rgba(11, 26, 42, 0.92); }
+
+        .plano-card { margin-bottom: 35px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .plano-info h2 { color: #FFFFFF; font-size: 22px; margin-bottom: 6px; font-weight: 700; text-shadow: 0px 2px 4px rgba(0,0,0,0.4); }
+        .plano-info p { color: #CBD5E1; font-size: 14px; font-weight: 500; }
+        
+        .btn-blue {
+            background-color: #4A90D9; color: #ffffff; text-decoration: none;
+            padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; transition: background 0.3s ease, transform 0.2s ease; display: inline-block;
+        }
+        .btn-blue:hover { background-color: #357abd; transform: scale(1.02); }
+
+        /* SEÇÃO E TÍTULOS DOS BLOCOS */
+        .bloco-section { margin-bottom: 40px; }
+        .bloco-header {
+            display: flex; align-items: center; gap: 12px; margin-bottom: 20px;
+            padding-bottom: 10px; border-bottom: 2px solid rgba(74, 144, 217, 0.5);
+        }
+        .bloco-badge {
+            background: #4A90D9; color: #ffffff; font-size: 12px; font-weight: 800;
+            padding: 4px 10px; border-radius: 20px; text-transform: uppercase;
+        }
+        .bloco-title { font-size: 20px; font-weight: 700; color: #FFFFFF; }
+
+        .materials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; }
+        .materials-grid.three-cols { grid-template-columns: repeat(3, 1fr); }
+        
+        .materials-grid h3 { 
+            color: #FFFFFF; 
+            font-size: 17px; 
+            margin-bottom: 15px; 
+            font-weight: 700; 
+            border-bottom: 1px solid rgba(74, 144, 217, 0.4); 
+            padding-bottom: 8px; 
+        }
+
+        .item-list { list-style: none; }
+        .item-list li { margin-bottom: 4px; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
+        .item-list li:hover { background: rgba(74, 144, 217, 0.25); }
+        .item-list li a { text-decoration: none; color: #F1F5F9; display: block; padding: 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
+        .item-list li strong { color: #4A90D9; margin-right: 6px; font-weight: 800; }
+
+        footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        footer a { color: #4A90D9; text-decoration: none; }
+
+        @media (max-width: 992px) { 
+            .materials-grid, .materials-grid.three-cols { grid-template-columns: 1fr; } 
+        }
+        @media (max-width: 768px) { .menu { display: none; } .brand-sub { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="brand">
+            <img src="logo.png" alt="RBJ®">
+            <span class="brand-sub">Prof. Dr. Roberto Bernardes Jr.</span>
+        </a>
+        <div class="menu">
+            <a href="index.html">Início</a>
+            <a href="Gestao_de_Custos.html">Custos</a>
+            <a href="TIA.html" class="active">TIA</a>
+            <a href="Administracao_Financeira.html">ADM Financeira</a>
+            <a href="Aplicativos_Informatizados.html">AI</a>
+            <a href="Sobre.html">Sobre</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <header class="page-header">
+            <h1>TIA</h1>
+            <p>Tecnologia da Informação Aplicada — Organização de Dados, Pensamento Computacional e Inteligência Artificial Generativa.</p>
+        </header>
+
+        <div class="container">
+            <!-- PLANO DE ENSINO CARD -->
+            <div class="glass-card plano-card">
+                <div class="plano-info">
+                    <h2>Plano de Ensino & Diretrizes</h2>
+                    <p>Visão geral da disciplina, matrizes de competências e orientações gerais.</p>
+                </div>
+                <a href="https://drive.google.com/file/d/1aybn83BlF15wOakSXMUa9M0KQRjWA48-/view?usp=sharing" target="_blank" class="btn-blue">Baixar Plano de Ensino →</a>
+            </div>
+
+            <!-- BLOCO 1 -->
+            <section class="bloco-section">
+                <div class="bloco-header">
+                    <span class="bloco-badge">Bloco 1</span>
+                    <h2 class="bloco-title">Gerenciamento de Arquivos e Produtividade</h2>
+                </div>
+                <div class="materials-grid">
+                    <div class="glass-card">
+                        <h3>📁 Organização, Nuvem e Segurança</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Métodos de Organização e Categorização de Arquivos</a></li>
+                            <li><a href="#"><strong>•</strong> Sincronização, Backup e Restauração em Nuvem</a></li>
+                            <li><a href="#"><strong>•</strong> Navegação Segura, Redes Sociais e Privacidade</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>📊 Suíte de Produtividade</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Edição de Textos e Formatação ABNT</a></li>
+                            <li><a href="#"><strong>•</strong> Apresentações: Slide Mestre e Técnicas de Design</a></li>
+                            <li><a href="#"><strong>•</strong> Planilhas Eletrônicas: Fórmulas, Funções e Gráficos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BLOCO 2 -->
+            <section class="bloco-section">
+                <div class="bloco-header">
+                    <span class="bloco-badge">Bloco 2</span>
+                    <h2 class="bloco-title">Pensamento Computacional</h2>
+                </div>
+                <div class="materials-grid three-cols">
+                    <div class="glass-card">
+                        <h3>🧩 Pilares e Decomposição</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Introdução ao Pensamento Computacional</a></li>
+                            <li><a href="#"><strong>•</strong> Os 4 Pilares: Decomposição, Padrões, Abstração e Algoritmos</a></li>
+                            <li><a href="#"><strong>•</strong> Decomposição e Divisão de Tarefas Complexas</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>📐 Abstração e Lógica Estruturada</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Modelagem, Abstração e Diagramas</a></li>
+                            <li><a href="#"><strong>•</strong> Algoritmos, Fluxogramas e Pseudocódigo</a></li>
+                            <li><a href="#"><strong>•</strong> Variáveis, Tipos de Dados e Operadores</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>⚡ Estruturas e Otimização</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Estruturas de Decisão (if, else, switch-case)</a></li>
+                            <li><a href="#"><strong>•</strong> Laços de Repetição (for, while, do-while)</a></li>
+                            <li><a href="#"><strong>•</strong> Otimização, Algoritmos Clássicos e Casos de Estudo</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BLOCO 3 -->
+            <section class="bloco-section">
+                <div class="bloco-header">
+                    <span class="bloco-badge">Bloco 3</span>
+                    <h2 class="bloco-title">Inteligência Artificial Generativa (IAGen)</h2>
+                </div>
+                <div class="materials-grid">
+                    <div class="glass-card">
+                        <h3>🤖 Fundamentos da IAGen</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Introdução à IA: Histórico e Áreas de Aplicação</a></li>
+                            <li><a href="#"><strong>•</strong> Diferenças entre IA Tradicional e IA Generativa</a></li>
+                            <li><a href="#"><strong>•</strong> Arquiteturas e Modelos (Transformers, GANs)</a></li>
+                            <li><a href="#"><strong>•</strong> Prática Inicial: ChatGPT, Copilot e Gemini</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>🎨 Ferramentas e Criação de Conteúdo</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Plataformas: Llama, ChatGPT, Midjourney, Hugging Face</a></li>
+                            <li><a href="#"><strong>•</strong> Geração de Texto, Resumos e Engenharia de Prompts</a></li>
+                            <li><a href="#"><strong>•</strong> Geração e Edição de Imagens via IA</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>⚖️ Produtividade, Ética e Sociedade</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> IAGen Aplicada a Textos, Slides e Planilhas</a></li>
+                            <li><a href="#"><strong>•</strong> Ética, Privacidade e Viés Algorítmico</a></li>
+                            <li><a href="#"><strong>•</strong> Desinformação e Direitos Autorais em Mídias Geradas</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="glass-card">
+                        <h3>🚀 Projetos Práticos & Aplicação</h3>
+                        <ul class="item-list">
+                            <li><a href="#"><strong>•</strong> Integração Multi-formatos (Texto e Imagem)</a></li>
+                            <li><a href="#"><strong>•</strong> Planejamento e Criação do Projeto de Conteúdo</a></li>
+                            <li><a href="#"><strong>•</strong> Apresentação, Avaliação e Impactos Futuros</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2012 RBJ® Roberto Bernardes Jr. - Todos os direitos reservados.</p>
+            <p>Contato: <a href="mailto:etecpirituba.pi@gmail.com">etecpirituba.pi@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
