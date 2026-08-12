@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TCC | Prof. Dr. Roberto Bernardes Jr.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body, html { height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
+        
+        nav {
+            height: 70px; background-color: rgba(11, 26, 42, 0.95);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 5%; position: fixed; top: 0; width: 100%;
+            z-index: 1000; border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .brand img { height: 36px; width: auto; }
+        .brand-sub { color: #ffffff; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; }
+        
+        .menu { display: flex; gap: 20px; }
+        .menu a { color: #ffffff; text-decoration: none; font-size: 12px; font-weight: 500; text-transform: uppercase; transition: color 0.3s ease; }
+        .menu a:hover { color: #4A90D9; }
+        .menu a.active { color: #4A90D9; font-weight: 700; }
+
+        .page-wrapper {
+            min-height: 100vh;
+            background-image: url('background-site.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            padding-top: 70px;
+            display: flex; flex-direction: column;
+        }
+
+        /* HEADER SUPERIOR */
+        .page-header {
+            background: rgba(11, 26, 42, 0.88);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 45px 5%;
+            text-align: center;
+            border-bottom: 1px solid rgba(74, 144, 217, 0.3);
+        }
+        .page-header h1 { font-size: 32px; color: #FFFFFF; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; text-shadow: 0px 2px 4px rgba(0,0,0,0.5); }
+        .page-header p { font-size: 16px; color: #E2E8F0; max-width: 800px; margin: 0 auto; font-weight: 400; }
+
+        .container { width: 92%; max-width: 1200px; margin: 30px auto; flex: 1; }
+
+        /* CARDS GLASS ENCORPADOS */
+        .glass-card {
+            background: rgba(11, 26, 42, 0.82);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(74, 144, 217, 0.4);
+            border-radius: 15px;
+            padding: 25px;
+            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+        }
+        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; background: rgba(11, 26, 42, 0.92); }
+
+        .plano-card { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+        .plano-info h2 { color: #FFFFFF; font-size: 22px; margin-bottom: 6px; font-weight: 700; text-shadow: 0px 2px 4px rgba(0,0,0,0.4); }
+        .plano-info p { color: #CBD5E1; font-size: 14px; font-weight: 500; }
+        
+        .btn-blue {
+            background-color: #4A90D9; color: #ffffff; text-decoration: none;
+            padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 13px;
+            text-transform: uppercase; transition: background 0.3s ease, transform 0.2s ease; display: inline-block;
+        }
+        .btn-blue:hover { background-color: #357abd; transform: scale(1.02); }
+
+        .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
+        .materials-grid h3 { 
+            color: #FFFFFF; 
+            font-size: 18px; 
+            margin-bottom: 18px; 
+            font-weight: 700; 
+            border-bottom: 1px solid rgba(74, 144, 217, 0.4); 
+            padding-bottom: 10px; 
+        }
+
+        /* LISTA DE ENTREGÁVEIS / ETAPAS */
+        .item-list { list-style: none; }
+        .item-list li { margin-bottom: 8px; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
+        .item-list li:hover { background: rgba(74, 144, 217, 0.25); }
+        .item-list li a, .item-list li div { text-decoration: none; color: #F1F5F9; display: block; padding: 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
+        .item-list li strong { color: #4A90D9; margin-right: 6px; font-weight: 800; }
+
+        footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
+        footer a { color: #4A90D9; text-decoration: none; }
+
+        @media (max-width: 992px) { .materials-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) { .menu { display: none; } .brand-sub { display: none; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="brand">
+            <img src="Logo.png" alt="RBJ®">
+            <span class="brand-sub">Prof. Dr. Roberto Bernardes Jr.</span>
+        </a>
+        <div class="menu">
+            <a href="index.html">Início</a>
+            <a href="Gestao_de_Custos.html">Custos</a>
+            <a href="TIA.html">TIA</a>
+            <a href="Administracao_Financeira.html">ADM Financeira</a>
+            <a href="Aplicativos_Informatizados.html">AI</a>
+            <a href="TCC.html" class="active">TCC</a>
+            <a href="Sobre.html">Sobre</a>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <header class="page-header">
+            <h1>TCC — Trabalho de Conclusão de Curso</h1>
+            <p>Técnico em Administração Modular — CEU Pêra Marmelo | Rumo ao Inova</p>
+        </header>
+
+        <div class="container">
+            <div class="glass-card plano-card">
+                <div class="plano-info">
+                    <h2>Cronograma e Orientação do TCC</h2>
+                    <p>Turma Modular de Administração — CEU Pêra Marmelo | Entregáveis Quinzenais</p>
+                </div>
+                <a href="TCC 1.pdf" target="_blank" class="btn-blue">Baixar Apresentação / Manual →</a>
+            </div>
+
+            <div class="materials-grid">
+                <!-- FASE 1 -->
+                <div class="glass-card">
+                    <h3>🔷 Fase 1 — Fundamentos e Segmentação</h3>
+                    <ul class="item-list">
+                        <li><div><strong>Q1</strong> — Proposta de Valor e Segmentação de Clientes</div></li>
+                        <li><div><strong>Q2</strong> — Pesquisa de Mercado e Perfil de Compradores Potenciais</div></li>
+                    </ul>
+                </div>
+
+                <!-- FASE 2 -->
+                <div class="glass-card">
+                    <h3>🔷 Fase 2 — Validação de Mercado</h3>
+                    <ul class="item-list">
+                        <li><div><strong>Q3</strong> — Pesquisa de Concorrência e Mapeamento de Diferenciais</div></li>
+                        <li><div><strong>Q4</strong> — Modelo de Receita e Precificação</div></li>
+                    </ul>
+                </div>
+
+                <!-- FASE 3 -->
+                <div class="glass-card">
+                    <h3>🔷 Fase 3 — Modelo de Negócio e Finanças</h3>
+                    <ul class="item-list">
+                        <li><div><strong>Q5</strong> — Ajuste do Business Model Canvas + Parcerias e Canais</div></li>
+                        <li><div><strong>Q6</strong> — Finanças: Fluxo de Caixa, Estimativa de Demanda e Receita</div></li>
+                    </ul>
+                </div>
+
+                <!-- FASE 4 -->
+                <div class="glass-card">
+                    <h3>🔷 Fase 4 — Protótipo e Validação</h3>
+                    <ul class="item-list">
+                        <li><div><strong>Q7</strong> — Desenvolvimento do Protótipo (site) + Teste da Proposta de Valor</div></li>
+                        <li><div><strong>Q8</strong> — Refinamento do Modelo de Negócio, Protótipo e Identidade Visual</div></li>
+                    </ul>
+                </div>
+
+                <!-- FASE 5 -->
+                <div class="glass-card">
+                    <h3>🔷 Fase 5 — Entrega Final</h3>
+                    <ul class="item-list">
+                        <li><div><strong>Q9</strong> — Montagem do Pitch Deck e Apresentação Final</div></li>
+                        <li><div><strong>Entrega:</strong> Pitch Deck + Modelo de Negócio + Protótipo + Finanças</div></li>
+                    </ul>
+                </div>
+
+                <!-- SUPORTE & ACOMPANHAMENTO -->
+                <div class="glass-card">
+                    <h3>🔷 Orientação e Suporte</h3>
+                    <ul class="item-list">
+                        <li><div><strong>Atendimento:</strong> Sempre que necessário, conversar com o professor para ajustar etapas ou abrir aula para apoio.</div></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2012 RBJ® Roberto Bernardes Jr. - Todos os direitos reservados.</p>
+            <p>Contato: <a href="mailto:etecpirituba.pi@gmail.com">etecpirituba.pi@gmail.com</a></p>
+        </footer>
+    </div>
+</body>
+</html>
