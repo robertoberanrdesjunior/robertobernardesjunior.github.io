@@ -11,6 +11,7 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body, html { height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
         
+        /* NAVBAR FIXA */
         nav {
             height: 70px; background-color: rgba(11, 26, 42, 0.95);
             display: flex; justify-content: space-between; align-items: center;
@@ -23,11 +24,102 @@
         .brand img { height: 36px; width: auto; }
         .brand-sub { color: #ffffff; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; }
         
+        /* MENU DESKTOP */
         .menu { display: flex; gap: 25px; }
         .menu a { color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; transition: color 0.3s ease; }
         .menu a:hover { color: #4A90D9; }
         .menu a.active { color: #4A90D9; font-weight: 700; }
 
+        /* BOTÃO HAMBÚRGUER (MOBILE) */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+            padding: 0;
+        }
+        .hamburger-btn span {
+            width: 100%;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ANIMAÇÃO DO HAMBÚRGUER (X) */
+        .hamburger-btn.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* MENU LATERAL SLIDE-IN (MOBILE) */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(11, 26, 42, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-left: 1px solid rgba(74, 144, 217, 0.3);
+            display: flex;
+            flex-direction: column;
+            padding: 90px 30px 40px 30px;
+            gap: 20px;
+            z-index: 1050;
+            transition: right 0.4s ease-in-out;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: #4A90D9;
+            padding-left: 8px;
+        }
+
+        /* OVERLAY ESCURO ATRÁS DO MENU MOBILE */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ESTRUTURA DA PÁGINA */
         .page-wrapper {
             min-height: 100vh;
             background-image: url('background-site.png');
@@ -165,21 +257,48 @@
         footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         footer a { color: #4A90D9; text-decoration: none; }
 
+        /* ADAPTAÇÕES RESPONSIVAS */
         @media (max-width: 992px) { 
             .materials-grid, .ptd-grid { grid-template-columns: 1fr; } 
             .video-card { flex-direction: column; align-items: stretch; }
             .video-thumb { width: 100%; }
         }
-        @media (max-width: 768px) { .menu { display: none; } .brand-sub { display: none; } }
+        @media (max-width: 768px) { 
+            .menu { display: none; } 
+            .brand-sub { display: none; } 
+            .hamburger-btn { display: flex; }
+        }
     </style>
 </head>
 <body>
     <nav>
-    <a href="index.html" class="brand">
-        <img src="Logo.png" alt="RBJ®">
-        <span class="brand-sub">Prof. Dr. Roberto Bernardes Jr.</span>
-    </a>
-    <div class="menu">
+        <a href="index.html" class="brand">
+            <img src="Logo.png" alt="RBJ®">
+            <span class="brand-sub">Prof. Dr. Roberto Bernardes Jr.</span>
+        </a>
+
+        <!-- Menu Desktop -->
+        <div class="menu">
+            <a href="index.html">Início</a>
+            <a href="Gestao_de_Custos.html">Custos</a>
+            <a href="TIA.html" class="active">TIA</a>
+            <a href="Administracao_Financeira.html">ADM Financeira</a>
+            <a href="Aplicativos_Informatizados.html">AI</a>
+            <a href="TCC.html">TCC</a>
+            <a href="Sobre.html">Sobre</a>
+        </div>
+
+        <!-- Botão Hambúrguer Mobile -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </nav>
+
+    <!-- Overlay e Menu Lateral Mobile -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
         <a href="index.html">Início</a>
         <a href="Gestao_de_Custos.html">Custos</a>
         <a href="TIA.html" class="active">TIA</a>
@@ -188,7 +307,6 @@
         <a href="TCC.html">TCC</a>
         <a href="Sobre.html">Sobre</a>
     </div>
-</nav>
 
     <div class="page-wrapper">
         <header class="page-header">
@@ -447,5 +565,30 @@
             <p>Contato: <a href="mailto:etecpirituba.pi@gmail.com">etecpirituba.pi@gmail.com</a></p>
         </footer>
     </div>
+
+    <!-- SCRIPT DO MENU MOBILE -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Fecha o menu se um link for clicado
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
