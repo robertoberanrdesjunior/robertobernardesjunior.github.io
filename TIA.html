@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
+        body, html { min-height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
         
         /* NAVBAR FIXA */
         nav {
@@ -125,7 +125,7 @@
             background-image: url('background-site.png');
             background-size: cover;
             background-position: center;
-            background-attachment: scroll;
+            background-repeat: no-repeat;
             padding-top: 70px;
             display: flex; flex-direction: column;
         }
@@ -289,7 +289,7 @@
         </div>
 
         <!-- Botão Hambúrguer Mobile -->
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir Menu">
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir Menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
@@ -316,7 +316,7 @@
 
         <div class="container">
             
-            <!-- SEÇÃO DE PLANOS DE TRABALHO DIDOÁTICO (PTD) -->
+            <!-- SEÇÃO DE PLANOS DE TRABALHO DIDÁTICO (PTD) -->
             <div class="ptd-section">
                 <h2 class="section-title">📋 Planos de Trabalho & Diretrizes (PTD)</h2>
                 <div class="ptd-grid">
@@ -327,7 +327,7 @@
                             <p style="margin-top: 10px;">Plano de ensino, competências, habilidades e diretrizes da disciplina focada no contexto administrativo.</p>
                         </div>
                         <div class="ptd-buttons">
-                            <a href="https://drive.google.com/file/d/1aybn83BlF15wOakSXMUa9M0KQRjWA48-/view?usp=sharing" target="_blank" class="btn-blue">Ver Plano de Ensino TIAA →</a>
+                            <a href="https://drive.google.com/file/d/1aybn83BlF15wOakSXMUa9M0KQRjWA48-/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-blue">Ver Plano de Ensino TIAA →</a>
                         </div>
                     </div>
 
@@ -338,8 +338,8 @@
                             <p style="margin-top: 10px;">Apresentação do PTD e plano estruturado de projetos tecnológicos e comunicação digital.</p>
                         </div>
                         <div class="ptd-buttons">
-                            <a href="https://drive.google.com/file/d/17NUN7CLe3-5VmY7UBCIayX_oXdoUa7FT/view?usp=sharing" target="_blank" class="btn-outline">Apresentação PTD 📊</a>
-                            <a href="https://drive.google.com/file/d/1WOj9aYstnTP6rXqxR7Xzd79iL9tatts-/view?usp=sharing" target="_blank" class="btn-blue">Plano de Ensino PTIC →</a>
+                            <a href="https://drive.google.com/file/d/17NUN7CLe3-5VmY7UBCIayX_oXdoUa7FT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline">Apresentação PTD 📊</a>
+                            <a href="https://drive.google.com/file/d/1WOj9aYstnTP6rXqxR7Xzd79iL9tatts-/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-blue">Plano de Ensino PTIC →</a>
                         </div>
                     </div>
                 </div>
@@ -354,9 +354,9 @@
                 <div class="glass-card">
                     <h3>📁 Gestão de Arquivos & Segurança</h3>
                     <ul class="item-list">
-                        <li><a href="1.html"><strong>•</strong> Métodos de Organização e Categorização</a></li>
-                        <li><a href="1.html"><strong>•</strong> Sincronização, Backup e Nuvem</a></li>
-                        <li><a href="1.html"><strong>•</strong> Navegação Segura, Redes e Privacidade</a></li>
+                        <li><a href="#"><strong>•</strong> Métodos de Organização e Categorização</a></li>
+                        <li><a href="#"><strong>•</strong> Sincronização, Backup e Nuvem</a></li>
+                        <li><a href="#"><strong>•</strong> Navegação Segura, Redes e Privacidade</a></li>
                     </ul>
                 </div>
 
@@ -364,9 +364,9 @@
                 <div class="glass-card">
                     <h3>🛠️ Produtividade & Suíte de Escritório</h3>
                     <ul class="item-list">
-                        <li><a href="1.html"><strong>•</strong> Edição de Textos e Normas ABNT</a></li>
-                        <li><a href="1.html"><strong>•</strong> Apresentações: Slide Mestre e Design</a></li>
-                        <li><a href="1.html"><strong>•</strong> Planilhas: Fórmulas, Funções e Gráficos</a></li>
+                        <li><a href="#"><strong>•</strong> Edição de Textos e Normas ABNT</a></li>
+                        <li><a href="#"><strong>•</strong> Apresentações: Slide Mestre e Design</a></li>
+                        <li><a href="#"><strong>•</strong> Planilhas: Fórmulas, Funções e Gráficos</a></li>
                     </ul>
                 </div>
 
@@ -374,9 +374,9 @@
                 <div class="glass-card">
                     <h3>🧩 Pensamento Computacional & Lógica</h3>
                     <ul class="item-list">
-                        <li><a href="1.html"><strong>•</strong> Introdução e os 4 Pilares da Lógica</a></li>
-                        <li><a href="1.html"><strong>•</strong> Decomposição, Abstração e Algoritmos</a></li>
-                        <li><a href="1.html"><strong>•</strong> Fluxogramas, Decisão (if/else) e Laços</a></li>
+                        <li><a href="#"><strong>•</strong> Introdução e os 4 Pilares da Lógica</a></li>
+                        <li><a href="#"><strong>•</strong> Decomposição, Abstração e Algoritmos</a></li>
+                        <li><a href="#"><strong>•</strong> Fluxogramas, Decisão (if/else) e Laços</a></li>
                     </ul>
                 </div>
 
@@ -384,9 +384,9 @@
                 <div class="glass-card">
                     <h3>🤖 Fundamentos & Ferramentas de IA</h3>
                     <ul class="item-list">
-                        <li><a href="1.html"><strong>•</strong> IA Tradicional vs. IA Generativa</a></li>
-                        <li><a href="1.html"><strong>•</strong> Modelos (Transformers, GANs, LLMs)</a></li>
-                        <li><a href="1.html"><strong>•</strong> Prática: ChatGPT, Gemini e Copilot</a></li>
+                        <li><a href="#"><strong>•</strong> IA Tradicional vs. IA Generativa</a></li>
+                        <li><a href="#"><strong>•</strong> Modelos (Transformers, GANs, LLMs)</a></li>
+                        <li><a href="#"><strong>•</strong> Prática: ChatGPT, Gemini e Copilot</a></li>
                     </ul>
                 </div>
 
@@ -394,9 +394,9 @@
                 <div class="glass-card">
                     <h3>🎨 Criação de Mídias & Prompts</h3>
                     <ul class="item-list">
-                        <li><a href="1.html"><strong>•</strong> Engenharia de Prompts e Geração de Texto</a></li>
-                        <li><a href="1.html"><strong>•</strong> Geração e Ajuste de Imagens com IA</a></li>
-                        <li><a href="1.html"><strong>•</strong> Ferramentas: Midjourney, Hugging Face, etc.</a></li>
+                        <li><a href="#"><strong>•</strong> Engenharia de Prompts e Geração de Texto</a></li>
+                        <li><a href="#"><strong>•</strong> Geração e Ajuste de Imagens com IA</a></li>
+                        <li><a href="#"><strong>•</strong> Ferramentas: Midjourney, Hugging Face, etc.</a></li>
                     </ul>
                 </div>
 
@@ -404,9 +404,9 @@
                 <div class="glass-card">
                     <h3>⚖️ Ética, Sociedade & Projetos</h3>
                     <ul class="item-list">
-                        <li><a href="1.html"><strong>•</strong> IAGen Aplicada a Textos, Slides e Planilhas</a></li>
-                        <li><a href="1.html"><strong>•</strong> Direitos Autorais, Viés e Uso Ético</a></li>
-                        <li><a href="1.html"><strong>•</strong> Projeto Final & Aplicação Prática</a></li>
+                        <li><a href="#"><strong>•</strong> IAGen Aplicada a Textos, Slides e Planilhas</a></li>
+                        <li><a href="#"><strong>•</strong> Direitos Autorais, Viés e Uso Ético</a></li>
+                        <li><a href="#"><strong>•</strong> Projeto Final & Aplicação Prática</a></li>
                     </ul>
                 </div>
 
@@ -418,7 +418,7 @@
                 
                 <!-- VÍDEO ORIGINAL DE NUVEM -->
                 <div class="glass-card video-card">
-                    <a href="https://youtu.be/Bt4eapydekY" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://youtu.be/Bt4eapydekY" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/Bt4eapydekY/hqdefault.jpg" alt="Trabalhando em Nuvem: Guia Prático">
                         <div class="play-icon">▶</div>
                     </a>
@@ -430,7 +430,7 @@
                             <li><strong>•</strong> Controle de permissões (Leitor, Comentador e Editor)</li>
                             <li><strong>•</strong> Edição colaborativa em tempo real e histórico de alterações</li>
                         </ul>
-                        <a href="https://youtu.be/Bt4eapydekY" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://youtu.be/Bt4eapydekY" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
@@ -438,7 +438,7 @@
                 
                 <!-- Aula 1 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/WZYrmILUWGk/hqdefault.jpg" alt="Aula 1 - Modelagem e Fluxo de Negócios">
                         <div class="play-icon">▶</div>
                     </a>
@@ -449,13 +449,13 @@
                             <li><strong>•</strong> Mapeamento da informação com fluxogramas (Cliente → Loja → Itens → Logística)</li>
                             <li><strong>•</strong> Definição das entidades e necessidades operacionais do sistema</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
                 <!-- Aula 2 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/-H8ZHgT3sUU/hqdefault.jpg" alt="Aula 2 - Estruturação das Tabelas e Relacionamentos">
                         <div class="play-icon">▶</div>
                     </a>
@@ -466,13 +466,13 @@
                             <li><strong>•</strong> Importância dos Campos Chave (Chave Primária/ID) para evitar duplicidade</li>
                             <li><strong>•</strong> Estruturação de tabelas para Clientes, Logística, Vendas e Itens</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
                 <!-- Aula 3 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/Lhn0lY-CpuQ/hqdefault.jpg" alt="Aula 3 - Criação de Tabelas e Tipos de Dados">
                         <div class="play-icon">▶</div>
                     </a>
@@ -484,13 +484,13 @@
                             <li><strong>•</strong> Máscaras de entrada para validação de CPF, Telefone e Datas</li>
                             <li><strong>•</strong> Assistente de Pesquisa para listas de seleção padronizadas</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
                 <!-- Aula 4 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/_FBm8iZ83os/hqdefault.jpg" alt="Aula 4 - Criação e Customização de Formulários">
                         <div class="play-icon">▶</div>
                     </a>
@@ -501,13 +501,13 @@
                             <li><strong>•</strong> Organização visual no Modo Design</li>
                             <li><strong>•</strong> Inserção de botões com assistente: Navegação (Próximo, Anterior) e Operações (Salvar, Novo, Excluir)</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
                 <!-- Aula 5 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/4nFgD03tE9A/hqdefault.jpg" alt="Aula 5 - Subformulários e Vínculos">
                         <div class="play-icon">▶</div>
                     </a>
@@ -518,13 +518,13 @@
                             <li><strong>•</strong> Integração de dados do cliente na tela de pedido</li>
                             <li><strong>•</strong> Uso de Subformulários para controle de itens da compra</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
                 <!-- Aula 6 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/nToxgLtHHis/hqdefault.jpg" alt="Aula 6 - Formulários Avançados e Recursos Visuais">
                         <div class="play-icon">▶</div>
                     </a>
@@ -535,13 +535,14 @@
                             <li><strong>•</strong> Uso de alinhamento em grade e Assistente de Formulários</li>
                             <li><strong>•</strong> Controles especiais: Objetos OLE (Fotos) e Caixas de Seleção (Sim/Não)</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
                 <!-- Aula 7 -->
                 <div class="glass-card video-card">
-                    <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                    <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/eRtWOxJi8Gw" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
                         <img src="https://img.youtube.com/vi/eRtWOxJi8Gw/hqdefault.jpg" alt="Aula 7 - Tela Integrada de Vendas">
                         <div class="play-icon">▶</div>
                     </a>
@@ -552,7 +553,7 @@
                             <li><strong>•</strong> Grupos de opções para separação visual (Cliente, Logística e Pedido)</li>
                             <li><strong>•</strong> Consolidação dos registros no mesmo formulário</li>
                         </ul>
-                        <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                        <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
                     </div>
                 </div>
 
@@ -573,9 +574,12 @@
         const menuOverlay = document.getElementById('menuOverlay');
 
         function toggleMenu() {
-            hamburgerBtn.classList.toggle('active');
+            const isActive = hamburgerBtn.classList.toggle('active');
             mobileMenu.classList.toggle('active');
             menuOverlay.classList.toggle('active');
+            
+            // Atualiza acessibilidade do botão hambúrguer
+            hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
         }
 
         hamburgerBtn.addEventListener('click', toggleMenu);
