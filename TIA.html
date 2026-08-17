@@ -108,11 +108,67 @@
         .item-list li a { text-decoration: none; color: #F1F5F9; display: block; padding: 8px 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
         .item-list li strong { color: #4A90D9; margin-right: 6px; font-weight: 800; }
 
+        /* ESTILOS DA SEÇÃO DE VIDEOAULAS */
+        .video-section { margin-bottom: 40px; display: flex; flex-direction: column; gap: 20px; }
+        .video-card {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        .video-thumb {
+            position: relative;
+            flex-shrink: 0;
+            width: 320px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(74, 144, 217, 0.4);
+            display: block;
+        }
+        .video-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .video-thumb:hover img {
+            transform: scale(1.05);
+        }
+        .video-thumb .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(74, 144, 217, 0.9);
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .video-thumb:hover .play-icon {
+            background: #ffffff;
+            color: #0b1a2a;
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+        .video-info { flex: 1; }
+        .video-info h3 { color: #ffffff; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .video-info p { color: #CBD5E1; font-size: 13px; line-height: 1.5; margin-bottom: 15px; }
+        .video-info ul { list-style: none; margin-bottom: 15px; }
+        .video-info ul li { font-size: 12px; color: #94A3B8; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+        .video-info ul li strong { color: #4A90D9; }
+
         footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         footer a { color: #4A90D9; text-decoration: none; }
 
         @media (max-width: 992px) { 
             .materials-grid, .ptd-grid { grid-template-columns: 1fr; } 
+            .video-card { flex-direction: column; align-items: stretch; }
+            .video-thumb { width: 100%; }
         }
         @media (max-width: 768px) { .menu { display: none; } .brand-sub { display: none; } }
     </style>
@@ -234,6 +290,152 @@
                         <li><a href="1.html"><strong>•</strong> Direitos Autorais, Viés e Uso Ético</a></li>
                         <li><a href="1.html"><strong>•</strong> Projeto Final & Aplicação Prática</a></li>
                     </ul>
+                </div>
+
+            </div>
+
+            <!-- SEÇÃO DE VIDEOAULAS E MATERIAIS EXTRAS -->
+            <div class="video-section">
+                <h2 class="section-title">🎥 Videoaulas & Materiais Extras</h2>
+                
+                <!-- VÍDEO ORIGINAL DE NUVEM -->
+                <div class="glass-card video-card">
+                    <a href="https://youtu.be/Bt4eapydekY" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/Bt4eapydekY/hqdefault.jpg" alt="Trabalhando em Nuvem: Guia Prático">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Trabalhando em Nuvem: Guia Prático de Colaboração para Projetos</h3>
+                        <p>Tutorial prático demonstrando o funcionamento do Google Drive, organização de diretórios, compartilhamento e edição síncrona/assíncrona de documentos em equipe.</p>
+                        <ul>
+                            <li><strong>•</strong> Armazenamento e estrutura de pastas em nuvem</li>
+                            <li><strong>•</strong> Controle de permissões (Leitor, Comentador e Editor)</li>
+                            <li><strong>•</strong> Edição colaborativa em tempo real e histórico de alterações</li>
+                        </ul>
+                        <a href="https://youtu.be/Bt4eapydekY" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- CURSO DE MICROSOFT ACCESS (AULAS 1 A 7) -->
+                
+                <!-- Aula 1 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/WZYrmILUWGk/hqdefault.jpg" alt="Aula 1 - Modelagem e Fluxo de Negócios">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 1: Modelagem e Fluxo de Negócios</h3>
+                        <p>Aprenda a planejar o fluxo de operações do negócio antes de criar o banco de dados no Access.</p>
+                        <ul>
+                            <li><strong>•</strong> Mapeamento da informação com fluxogramas (Cliente → Loja → Itens → Logística)</li>
+                            <li><strong>•</strong> Definição das entidades e necessidades operacionais do sistema</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 2 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/-H8ZHgT3sUU/hqdefault.jpg" alt="Aula 2 - Estruturação das Tabelas e Relacionamentos">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 2: Estruturação das Tabelas e Relacionamentos</h3>
+                        <p>Definição de campos e estrutura lógica das entidades do banco de dados.</p>
+                        <ul>
+                            <li><strong>•</strong> Importância dos Campos Chave (Chave Primária/ID) para evitar duplicidade</li>
+                            <li><strong>•</strong> Estruturação de tabelas para Clientes, Logística, Vendas e Itens</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 3 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/Lhn0lY-CpuQ/hqdefault.jpg" alt="Aula 3 - Criação de Tabelas e Tipos de Dados">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 3: Criação de Tabelas e Tipos de Dados</h3>
+                        <p>Implementação prática da modelagem diretamente na ferramenta do Access.</p>
+                        <ul>
+                            <li><strong>•</strong> Tipos de dados (Numeração Automática, Texto Curto, etc.)</li>
+                            <li><strong>•</strong> Máscaras de entrada para validação de CPF, Telefone e Datas</li>
+                            <li><strong>•</strong> Assistente de Pesquisa para listas de seleção padronizadas</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 4 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/_FBm8iZ83os/hqdefault.jpg" alt="Aula 4 - Criação e Customização de Formulários">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 4: Criação e Customização de Formulários</h3>
+                        <p>Desenvolvimento da interface gráfica para cadastro e edição de registros.</p>
+                        <ul>
+                            <li><strong>•</strong> Organização visual no Modo Design</li>
+                            <li><strong>•</strong> Inserção de botões com assistente: Navegação (Próximo, Anterior) e Operações (Salvar, Novo, Excluir)</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 5 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/4nFgD03tE9A/hqdefault.jpg" alt="Aula 5 - Subformulários e Vínculos">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 5: Subformulários e Vínculos entre Tabelas</h3>
+                        <p>Conexão entre tabelas para criação de relacionamentos dinâmicos em telas de vendas.</p>
+                        <ul>
+                            <li><strong>•</strong> Integração de dados do cliente na tela de pedido</li>
+                            <li><strong>•</strong> Uso de Subformulários para controle de itens da compra</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 6 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/nToxgLtHHis/hqdefault.jpg" alt="Aula 6 - Formulários Avançados e Recursos Visuais">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 6: Formulários Avançados e Recursos Visuais</h3>
+                        <p>Aprimoramento estético e funcional das telas do sistema.</p>
+                        <ul>
+                            <li><strong>•</strong> Uso de alinhamento em grade e Assistente de Formulários</li>
+                            <li><strong>•</strong> Controles especiais: Objetos OLE (Fotos) e Caixas de Seleção (Sim/Não)</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 7 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/eRtWOxJi8Gw/hqdefault.jpg" alt="Aula 7 - Tela Integrada de Vendas">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 7: Tela Integrada de Vendas</h3>
+                        <p>Integração de múltiplos módulos e tabelas no painel operacional principal.</p>
+                        <ul>
+                            <li><strong>•</strong> Grupos de opções para separação visual (Cliente, Logística e Pedido)</li>
+                            <li><strong>•</strong> Consolidação dos registros no mesmo formulário</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
                 </div>
 
             </div>
