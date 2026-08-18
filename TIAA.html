@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TIAA | Prof. Dr. Roberto Bernardes Jr.</title>
+    <title>TIA / PTIC | Prof. Dr. Roberto Bernardes Jr.</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body, html { height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
+        body, html { min-height: 100%; font-family: 'Inter', sans-serif; background-color: #0b1a2a; color: #ffffff; overflow-x: hidden; }
         
+        /* NAVBAR FIXA */
         nav {
             height: 70px; background-color: rgba(11, 26, 42, 0.95);
             display: flex; justify-content: space-between; align-items: center;
@@ -23,22 +24,112 @@
         .brand img { height: 36px; width: auto; }
         .brand-sub { color: #ffffff; font-weight: 600; font-size: 14px; letter-spacing: 0.5px; }
         
+        /* MENU DESKTOP */
         .menu { display: flex; gap: 25px; }
         .menu a { color: #ffffff; text-decoration: none; font-size: 13px; font-weight: 500; text-transform: uppercase; transition: color 0.3s ease; }
         .menu a:hover { color: #4A90D9; }
         .menu a.active { color: #4A90D9; font-weight: 700; }
 
+        /* BOTÃO HAMBÚRGUER (MOBILE) */
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1100;
+            padding: 0;
+        }
+        .hamburger-btn span {
+            width: 100%;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        /* ANIMAÇÃO DO HAMBÚRGUER (X) */
+        .hamburger-btn.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+        .hamburger-btn.active span:nth-child(2) {
+            opacity: 0;
+        }
+        .hamburger-btn.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* MENU LATERAL SLIDE-IN (MOBILE) */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background: rgba(11, 26, 42, 0.98);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-left: 1px solid rgba(74, 144, 217, 0.3);
+            display: flex;
+            flex-direction: column;
+            padding: 90px 30px 40px 30px;
+            gap: 20px;
+            z-index: 1050;
+            transition: right 0.4s ease-in-out;
+            box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: color 0.3s ease, padding-left 0.3s ease;
+        }
+        .mobile-menu a:hover,
+        .mobile-menu a.active {
+            color: #4A90D9;
+            padding-left: 8px;
+        }
+
+        /* OVERLAY ESCURO ATRÁS DO MENU MOBILE */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(3px);
+            z-index: 1040;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        .menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ESTRUTURA DA PÁGINA */
         .page-wrapper {
             min-height: 100vh;
             background-image: url('background-site.png');
             background-size: cover;
             background-position: center;
-            background-attachment: scroll;
+            background-repeat: no-repeat;
             padding-top: 70px;
             display: flex; flex-direction: column;
         }
 
-        /* HEADER SUPERIOR COM AZUL LEITOSO MAIS FORTE */
         .page-header {
             background: rgba(11, 26, 42, 0.88);
             backdrop-filter: blur(10px);
@@ -48,11 +139,10 @@
             border-bottom: 1px solid rgba(74, 144, 217, 0.3);
         }
         .page-header h1 { font-size: 32px; color: #FFFFFF; margin-bottom: 10px; font-weight: 800; text-transform: uppercase; text-shadow: 0px 2px 4px rgba(0,0,0,0.5); }
-        .page-header p { font-size: 16px; color: #E2E8F0; max-width: 800px; margin: 0 auto; font-weight: 400; }
+        .page-header p { font-size: 16px; color: #E2E8F0; max-width: 850px; margin: 0 auto; font-weight: 400; }
 
         .container { width: 92%; max-width: 1200px; margin: 30px auto; flex: 1; }
 
-        /* CARDS ESTILO AZUL LEITOSO ENCORPADO */
         .glass-card {
             background: rgba(11, 26, 42, 0.82);
             backdrop-filter: blur(12px);
@@ -60,144 +150,414 @@
             border: 1px solid rgba(74, 144, 217, 0.4);
             border-radius: 15px;
             padding: 25px;
-            transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+            transition: border-color 0.3s ease, background 0.3s ease;
         }
-        .glass-card:hover { transform: translateY(-5px); border-color: #4A90D9; background: rgba(11, 26, 42, 0.92); }
+        .glass-card:hover { border-color: #4A90D9; background: rgba(11, 26, 42, 0.92); }
 
-        .plano-card { margin-bottom: 30px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
-        .plano-info h2 { color: #FFFFFF; font-size: 22px; margin-bottom: 6px; font-weight: 700; text-shadow: 0px 2px 4px rgba(0,0,0,0.4); }
-        .plano-info p { color: #CBD5E1; font-size: 14px; font-weight: 500; }
-        
+        /* SEÇÃO DOS PLANOS DE TRABALHO (PTD) */
+        .ptd-section { margin-bottom: 40px; }
+        .ptd-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 15px; }
+        .ptd-card { display: flex; flex-direction: column; justify-content: space-between; gap: 15px; }
+        .ptd-card h3 { color: #FFFFFF; font-size: 18px; font-weight: 700; border-bottom: 1px solid rgba(74, 144, 217, 0.4); padding-bottom: 8px; }
+        .ptd-card p { color: #CBD5E1; font-size: 13px; line-height: 1.5; }
+        .ptd-buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: auto; }
+
         .btn-blue {
             background-color: #4A90D9; color: #ffffff; text-decoration: none;
-            padding: 12px 24px; border-radius: 6px; font-weight: 700; font-size: 13px;
-            text-transform: uppercase; transition: background 0.3s ease, transform 0.2s ease; display: inline-block;
+            padding: 10px 18px; border-radius: 6px; font-weight: 700; font-size: 12px;
+            text-transform: uppercase; transition: background 0.3s ease, transform 0.2s ease; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
         }
-        .btn-blue:hover { background-color: #357abd; transform: scale(1.02); }
+        .btn-blue:hover { background-color: #357abd; }
+        .btn-outline {
+            background-color: transparent; border: 1px solid #4A90D9; color: #4A90D9; text-decoration: none;
+            padding: 9px 17px; border-radius: 6px; font-weight: 700; font-size: 12px;
+            text-transform: uppercase; transition: all 0.3s ease; display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+        }
+        .btn-outline:hover { background-color: rgba(74, 144, 217, 0.15); color: #ffffff; border-color: #ffffff; }
 
-        .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 50px; }
+        /* TÍTULOS DAS SEÇÕES */
+        .section-title {
+            font-size: 20px; font-weight: 700; color: #FFFFFF;
+            margin-bottom: 20px; padding-bottom: 8px;
+            border-bottom: 2px solid rgba(74, 144, 217, 0.5);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .materials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; margin-bottom: 35px; }
+        
         .materials-grid h3 { 
             color: #FFFFFF; 
-            font-size: 18px; 
-            margin-bottom: 18px; 
+            font-size: 16px; 
+            margin-bottom: 12px; 
             font-weight: 700; 
             border-bottom: 1px solid rgba(74, 144, 217, 0.4); 
-            padding-bottom: 10px; 
+            padding-bottom: 8px; 
         }
 
-        /* LISTA DE MATERIAIS COM LEITURA PERFEITA */
         .item-list { list-style: none; }
         .item-list li { margin-bottom: 4px; overflow: hidden; border-radius: 6px; transition: background 0.2s ease; }
         .item-list li:hover { background: rgba(74, 144, 217, 0.25); }
-        .item-list li a { text-decoration: none; color: #F1F5F9; display: block; padding: 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
+        .item-list li a { text-decoration: none; color: #F1F5F9; display: block; padding: 8px 10px; font-size: 13px; line-height: 1.4; font-weight: 500; }
         .item-list li strong { color: #4A90D9; margin-right: 6px; font-weight: 800; }
+
+        /* ESTILOS DA SEÇÃO DE VIDEOAULAS */
+        .video-section { margin-bottom: 40px; display: flex; flex-direction: column; gap: 20px; }
+        .video-card {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+        .video-thumb {
+            position: relative;
+            flex-shrink: 0;
+            width: 320px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid rgba(74, 144, 217, 0.4);
+            display: block;
+        }
+        .video-thumb img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+        .video-thumb:hover img {
+            transform: scale(1.02);
+        }
+        .video-thumb .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(74, 144, 217, 0.9);
+            color: #ffffff;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .video-thumb:hover .play-icon {
+            background: #ffffff;
+            color: #0b1a2a;
+            transform: translate(-50%, -50%) scale(1.05);
+        }
+        .video-info { flex: 1; }
+        .video-info h3 { color: #ffffff; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+        .video-info p { color: #CBD5E1; font-size: 13px; line-height: 1.5; margin-bottom: 15px; }
+        .video-info ul { list-style: none; margin-bottom: 15px; }
+        .video-info ul li { font-size: 12px; color: #94A3B8; margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
+        .video-info ul li strong { color: #4A90D9; }
 
         footer { background-color: #0b1a2a; color: #757575; text-align: center; padding: 30px 20px; font-size: 11px; border-top: 1px solid rgba(255, 255, 255, 0.05); }
         footer a { color: #4A90D9; text-decoration: none; }
 
-        @media (max-width: 992px) { .materials-grid { grid-template-columns: 1fr; } .last-card-wrapper { grid-column: span 1 !important; } }
-        @media (max-width: 768px) { .menu { display: none; } .brand-sub { display: none; } }
+        /* ADAPTAÇÕES RESPONSIVAS */
+        @media (max-width: 992px) { 
+            .materials-grid, .ptd-grid { grid-template-columns: 1fr; } 
+            .video-card { flex-direction: column; align-items: stretch; }
+            .video-thumb { width: 100%; }
+        }
+        @media (max-width: 768px) { 
+            .menu { display: none; } 
+            .brand-sub { display: none; } 
+            .hamburger-btn { display: flex; }
+        }
     </style>
 </head>
 <body>
     <nav>
         <a href="index.html" class="brand">
-            <img src="logo.png" alt="RBJ®">
+            <img src="Logo.png" alt="RBJ®">
             <span class="brand-sub">Prof. Dr. Roberto Bernardes Jr.</span>
         </a>
+
+        <!-- Menu Desktop -->
         <div class="menu">
             <a href="index.html">Início</a>
             <a href="Gestao_de_Custos.html">Custos</a>
-            <a href="TIAA.html" class="active">TIAA</a>
+            <a href="TIA.html" class="active">TIA</a>
             <a href="Administracao_Financeira.html">ADM Financeira</a>
             <a href="Aplicativos_Informatizados.html">AI</a>
+            <a href="TCC.html">TCC</a>
             <a href="Sobre.html">Sobre</a>
         </div>
+
+        <!-- Botão Hambúrguer Mobile -->
+        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Abrir Menu" aria-expanded="false">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
     </nav>
+
+    <!-- Overlay e Menu Lateral Mobile -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Início</a>
+        <a href="Gestao_de_Custos.html">Custos</a>
+        <a href="TIA.html" class="active">TIA</a>
+        <a href="Administracao_Financeira.html">ADM Financeira</a>
+        <a href="Aplicativos_Informatizados.html">AI</a>
+        <a href="TCC.html">TCC</a>
+        <a href="Sobre.html">Sobre</a>
+    </div>
 
     <div class="page-wrapper">
         <header class="page-header">
-            <h1>TIAA</h1>
-            <p>Tópicos Integrados em Administração e Análise — materiais, aulas e projetos.</p>
+            <h1>Tecnologia da Informação & Comunicação</h1>
+            <p>Repositório unificado de materiais, diretrizes e projetos para TIAA e PTIC.</p>
         </header>
 
         <div class="container">
-            <div class="glass-card plano-card">
-                <div class="plano-info">
-                    <h2>TIAA — 2º Semestre 2026</h2>
-                    <p>Tópicos, projetos e materiais de apoio para o semestre.</p>
-                </div>
-                <a href="https://drive.google.com/file/d/1aybn83BlF15wOakSXMUa9M0KQRjWA48-/view?usp=sharing" class="btn-blue">Baixar Plano de Ensino →</a>
-            </div>
+            
+            <!-- SEÇÃO DE PLANOS DE TRABALHO DIDÁTICO (PTD) -->
+            <div class="ptd-section">
+                <h2 class="section-title">📋 Planos de Trabalho & Diretrizes (PTD)</h2>
+                <div class="ptd-grid">
+                    <!-- CARD TIAA -->
+                    <div class="glass-card ptd-card">
+                        <div>
+                            <h3>📘 TIAA — Tecnologia da Informação Aplicada à Administração</h3>
+                            <p style="margin-top: 10px;">Plano de ensino, competências, habilidades e diretrizes da disciplina focada no contexto administrativo.</p>
+                        </div>
+                        <div class="ptd-buttons">
+                            <a href="https://drive.google.com/file/d/1aybn83BlF15wOakSXMUa9M0KQRjWA48-/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-blue">Ver Plano de Ensino TIAA →</a>
+                        </div>
+                    </div>
 
-            <div class="materials-grid">
-                <div class="glass-card">
-                    <h3>📊 SSIG + Sistemas</h3>
-                    <ul class="item-list">
-                        <li><a href="https://drive.google.com/file/d/1Y9gy-XWIvuuQaOti-uUoeQlXhEzAbaz6/view?usp=sharing"><strong>•</strong> Introdução aos SSIG</a></li>
-                        <li><a href="sistemas_informacao.pdf"><strong>•</strong> Sistemas de Informação Gerencial</a></li>
-                        <li><a href="ssig_exercicio.pdf"><strong>•</strong> Exercício - SSIG</a></li>
-                    </ul>
-                </div>
-
-                <div class="glass-card">
-                    <h3>🌐 Página Web</h3>
-                    <ul class="item-list">
-                        <li><a href="web_introducao.pdf"><strong>•</strong> Introdução à Criação de Páginas Web</a></li>
-                        <li><a href="web_html_css.pdf"><strong>•</strong> HTML e CSS</a></li>
-                        <li><a href="web_exercicio.pdf"><strong>•</strong> Exercício - Página Web</a></li>
-                    </ul>
-                </div>
-
-                <div class="glass-card">
-                    <h3>🗄️ Access</h3>
-                    <ul class="item-list">
-                        <li><a href="access_introducao.pdf"><strong>•</strong> Introdução ao Access</a></li>
-                        <li><a href="access_bd_relacional.pdf"><strong>•</strong> Banco de Dados Relacional</a></li>
-                        <li><a href="access_consultas.pdf"><strong>•</strong> Consultas e Relatórios</a></li>
-                        <li><a href="access_exercicio.pdf"><strong>•</strong> Exercício - Access</a></li>
-                    </ul>
-                </div>
-
-                <div class="glass-card">
-                    <h3>⚙️ ERP</h3>
-                    <ul class="item-list">
-                        <li><a href="erp_introducao.pdf"><strong>•</strong> Introdução aos Sistemas ERP</a></li>
-                        <li><a href="erp_modulos.pdf"><strong>•</strong> Módulos e Integração</a></li>
-                        <li><a href="erp_exercicio.pdf"><strong>•</strong> Exercício - ERP</a></li>
-                    </ul>
-                </div>
-
-                <div class="glass-card">
-                    <h3>📈 BI + Power Query</h3>
-                    <ul class="item-list">
-                        <li><a href="bi_introducao.pdf"><strong>•</strong> Introdução ao BI</a></li>
-                        <li><a href="power_query.pdf"><strong>•</strong> Power Query — Extração e Transformação</a></li>
-                        <li><a href="bi_exercicio.pdf"><strong>•</strong> Exercício - BI</a></li>
-                    </ul>
-                </div>
-
-                <div class="glass-card">
-                    <h3>📊 Power BI</h3>
-                    <ul class="item-list">
-                        <li><a href="powerbi_introducao.pdf"><strong>•</strong> Introdução ao Power BI</a></li>
-                        <li><a href="powerbi_dashboard.pdf"><strong>•</strong> Dashboards e Visualização de Dados</a></li>
-                        <li><a href="powerbi_dax.pdf"><strong>•</strong> DAX e Medidas</a></li>
-                        <li><a href="powerbi_exercicio.pdf"><strong>•</strong> Exercício - Power BI</a></li>
-                    </ul>
-                </div>
-
-                <div class="last-card-wrapper" style="grid-column: span 3; display: flex; justify-content: center;">
-                    <div class="glass-card" style="width: 100%; max-width: 400px;">
-                        <h3>🏆 Projeto Final</h3>
-                        <ul class="item-list">
-                            <li><a href="projeto_final_orientacoes.pdf"><strong>•</strong> Orientações do Projeto Final</a></li>
-                            <li><a href="projeto_final_template.pdf"><strong>•</strong> Template do Projeto</a></li>
-                            <li><a href="projeto_final_entrega.pdf"><strong>•</strong> Entrega - Projeto Final</a></li>
-                        </ul>
+                    <!-- CARD PTIC -->
+                    <div class="glass-card ptd-card">
+                        <div>
+                            <h3>📗 PTIC — Projetos de Tecnologia da Informação e Comunicação</h3>
+                            <p style="margin-top: 10px;">Apresentação do PTD e plano estruturado de projetos tecnológicos e comunicação digital.</p>
+                        </div>
+                        <div class="ptd-buttons">
+                            <a href="https://drive.google.com/file/d/17NUN7CLe3-5VmY7UBCIayX_oXdoUa7FT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-outline">Apresentação PTD 📊</a>
+                            <a href="https://drive.google.com/file/d/1WOj9aYstnTP6rXqxR7Xzd79iL9tatts-/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn-blue">Plano de Ensino PTIC →</a>
+                        </div>
                     </div>
                 </div>
             </div>
+
+            <!-- SEÇÃO DE CONTEÚDOS ORGANIZADOS POR TEMAS LÓGICOS -->
+            <h2 class="section-title">📚 Repositório de Conteúdos por Áreas Temáticas</h2>
+            
+            <div class="materials-grid">
+                
+                <!-- TEMA 1 -->
+                <div class="glass-card">
+                    <h3>📁 Gestão de Arquivos & Segurança</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> Métodos de Organização e Categorização</a></li>
+                        <li><a href="#"><strong>•</strong> Sincronização, Backup e Nuvem</a></li>
+                        <li><a href="#"><strong>•</strong> Navegação Segura, Redes e Privacidade</a></li>
+                    </ul>
+                </div>
+
+                <!-- TEMA 2 -->
+                <div class="glass-card">
+                    <h3>🛠️ Produtividade & Suíte de Escritório</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> Edição de Textos e Normas ABNT</a></li>
+                        <li><a href="#"><strong>•</strong> Apresentações: Slide Mestre e Design</a></li>
+                        <li><a href="#"><strong>•</strong> Planilhas: Fórmulas, Funções e Gráficos</a></li>
+                    </ul>
+                </div>
+
+                <!-- TEMA 3 -->
+                <div class="glass-card">
+                    <h3>🧩 Pensamento Computacional & Lógica</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> Introdução e os 4 Pilares da Lógica</a></li>
+                        <li><a href="#"><strong>•</strong> Decomposição, Abstração e Algoritmos</a></li>
+                        <li><a href="#"><strong>•</strong> Fluxogramas, Decisão (if/else) e Laços</a></li>
+                    </ul>
+                </div>
+
+                <!-- TEMA 4 -->
+                <div class="glass-card">
+                    <h3>🤖 Fundamentos & Ferramentas de IA</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> IA Tradicional vs. IA Generativa</a></li>
+                        <li><a href="#"><strong>•</strong> Modelos (Transformers, GANs, LLMs)</a></li>
+                        <li><a href="#"><strong>•</strong> Prática: ChatGPT, Gemini e Copilot</a></li>
+                    </ul>
+                </div>
+
+                <!-- TEMA 5 -->
+                <div class="glass-card">
+                    <h3>🎨 Criação de Mídias & Prompts</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> Engenharia de Prompts e Geração de Texto</a></li>
+                        <li><a href="#"><strong>•</strong> Geração e Ajuste de Imagens com IA</a></li>
+                        <li><a href="#"><strong>•</strong> Ferramentas: Midjourney, Hugging Face, etc.</a></li>
+                    </ul>
+                </div>
+
+                <!-- TEMA 6 -->
+                <div class="glass-card">
+                    <h3>⚖️ Ética, Sociedade & Projetos</h3>
+                    <ul class="item-list">
+                        <li><a href="#"><strong>•</strong> IAGen Aplicada a Textos, Slides e Planilhas</a></li>
+                        <li><a href="#"><strong>•</strong> Direitos Autorais, Viés e Uso Ético</a></li>
+                        <li><a href="#"><strong>•</strong> Projeto Final & Aplicação Prática</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- SEÇÃO DE VIDEOAULAS E MATERIAIS EXTRAS -->
+            <div class="video-section">
+                <h2 class="section-title">🎥 Videoaulas & Materiais Extras</h2>
+                
+                <!-- VÍDEO ORIGINAL DE NUVEM -->
+                <div class="glass-card video-card">
+                    <a href="https://youtu.be/Bt4eapydekY" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/Bt4eapydekY/hqdefault.jpg" alt="Trabalhando em Nuvem: Guia Prático">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Trabalhando em Nuvem: Guia Prático de Colaboração para Projetos</h3>
+                        <p>Tutorial prático demonstrando o funcionamento do Google Drive, organização de diretórios, compartilhamento e edição síncrona/assíncrona de documentos em equipe.</p>
+                        <ul>
+                            <li><strong>•</strong> Armazenamento e estrutura de pastas em nuvem</li>
+                            <li><strong>•</strong> Controle de permissões (Leitor, Comentador e Editor)</li>
+                            <li><strong>•</strong> Edição colaborativa em tempo real e histórico de alterações</li>
+                        </ul>
+                        <a href="https://youtu.be/Bt4eapydekY" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- CURSO DE MICROSOFT ACCESS (AULAS 1 A 7) -->
+                
+                <!-- Aula 1 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/WZYrmILUWGk/hqdefault.jpg" alt="Aula 1 - Modelagem e Fluxo de Negócios">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 1: Modelagem e Fluxo de Negócios</h3>
+                        <p>Aprenda a planejar o fluxo de operações do negócio antes de criar o banco de dados no Access.</p>
+                        <ul>
+                            <li><strong>•</strong> Mapeamento da informação com fluxogramas (Cliente → Loja → Itens → Logística)</li>
+                            <li><strong>•</strong> Definição das entidades e necessidades operacionais do sistema</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=WZYrmILUWGk" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 2 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/-H8ZHgT3sUU/hqdefault.jpg" alt="Aula 2 - Estruturação das Tabelas e Relacionamentos">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 2: Estruturação das Tabelas e Relacionamentos</h3>
+                        <p>Definição de campos e estrutura lógica das entidades do banco de dados.</p>
+                        <ul>
+                            <li><strong>•</strong> Importância dos Campos Chave (Chave Primária/ID) para evitar duplicidade</li>
+                            <li><strong>•</strong> Estruturação de tabelas para Clientes, Logística, Vendas e Itens</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=-H8ZHgT3sUU" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 3 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/Lhn0lY-CpuQ/hqdefault.jpg" alt="Aula 3 - Criação de Tabelas e Tipos de Dados">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 3: Criação de Tabelas e Tipos de Dados</h3>
+                        <p>Implementação prática da modelagem diretamente na ferramenta do Access.</p>
+                        <ul>
+                            <li><strong>•</strong> Tipos de dados (Numeração Automática, Texto Curto, etc.)</li>
+                            <li><strong>•</strong> Máscaras de entrada para validação de CPF, Telefone e Datas</li>
+                            <li><strong>•</strong> Assistente de Pesquisa para listas de seleção padronizadas</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=Lhn0lY-CpuQ" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 4 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/_FBm8iZ83os/hqdefault.jpg" alt="Aula 4 - Criação e Customização de Formulários">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 4: Criação e Customização de Formulários</h3>
+                        <p>Desenvolvimento da interface gráfica para cadastro e edição de registros.</p>
+                        <ul>
+                            <li><strong>•</strong> Organização visual no Modo Design</li>
+                            <li><strong>•</strong> Inserção de botões com assistente: Navegação (Próximo, Anterior) e Operações (Salvar, Novo, Excluir)</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=_FBm8iZ83os" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 5 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/4nFgD03tE9A/hqdefault.jpg" alt="Aula 5 - Subformulários e Vínculos">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 5: Subformulários e Vínculos entre Tabelas</h3>
+                        <p>Conexão entre tabelas para criação de relacionamentos dinâmicos em telas de vendas.</p>
+                        <ul>
+                            <li><strong>•</strong> Integração de dados do cliente na tela de pedido</li>
+                            <li><strong>•</strong> Uso de Subformulários para controle de itens da compra</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=4nFgD03tE9A" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 6 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/nToxgLtHHis/hqdefault.jpg" alt="Aula 6 - Formulários Avançados e Recursos Visuais">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 6: Formulários Avançados e Recursos Visuais</h3>
+                        <p>Aprimoramento estético e funcional das telas do sistema.</p>
+                        <ul>
+                            <li><strong>•</strong> Uso de alinhamento em grade e Assistente de Formulários</li>
+                            <li><strong>•</strong> Controles especiais: Objetos OLE (Fotos) e Caixas de Seleção (Sim/Não)</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=nToxgLtHHis" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+                <!-- Aula 7 -->
+                <div class="glass-card video-card">
+                    <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" rel="noopener noreferrer" class="video-thumb" title="Assistir no YouTube">
+                        <img src="https://img.youtube.com/vi/eRtWOxJi8Gw/hqdefault.jpg" alt="Aula 7 - Tela Integrada de Vendas">
+                        <div class="play-icon">▶</div>
+                    </a>
+                    <div class="video-info">
+                        <h3>Microsoft Access | Aula 7: Tela Integrada de Vendas</h3>
+                        <p>Integração de múltiplos módulos e tabelas no painel operacional principal.</p>
+                        <ul>
+                            <li><strong>•</strong> Grupos de opções para separação visual (Cliente, Logística e Pedido)</li>
+                            <li><strong>•</strong> Consolidação dos registros no mesmo formulário</li>
+                        </ul>
+                        <a href="https://www.youtube.com/watch?v=eRtWOxJi8Gw" target="_blank" rel="noopener noreferrer" class="btn-blue">Assistir Videoaula no YouTube ↗</a>
+                    </div>
+                </div>
+
+            </div>
+
         </div>
 
         <footer>
@@ -205,5 +565,33 @@
             <p>Contato: <a href="mailto:etecpirituba.pi@gmail.com">etecpirituba.pi@gmail.com</a></p>
         </footer>
     </div>
+
+    <!-- SCRIPT DO MENU MOBILE -->
+    <script>
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        function toggleMenu() {
+            const isActive = hamburgerBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            // Atualiza acessibilidade do botão hambúrguer
+            hamburgerBtn.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+        }
+
+        hamburgerBtn.addEventListener('click', toggleMenu);
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Fecha o menu se um link for clicado
+        document.querySelectorAll('.mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileMenu.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
